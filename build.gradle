@@ -1,0 +1,16 @@
+apply plugin: 'idea'
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.2.0'
+    compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.4'
+}
+
+task export(type: JavaExec, dependsOn:classes) {
+    main = 'export'
+    classpath = sourceSets.main.runtimeClasspath
+}

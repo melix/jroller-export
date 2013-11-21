@@ -1,0 +1,37 @@
+= JRoller.com blog export tool
+
+This utility will assist you in exporting your JRoller blog hosted on http://jroller.com/[JRoller]. As is, this tool:
+
+* crawls public posts from your JRoller blog
+* extracts contents from blog (post, date, tags, ...)
+* converts them to asciidoc format using http://johnmacfarlane.net/pandoc/[Pandoc]
+* copies the result into the `content` directory of a http://jbake.org/[JBake blog]
+
+= Prerequisites
+
+You'll need to have:
+
+* the `pandoc` command line utility on path
+* a directory for your blog initialized for http://jbake.org/[JBake 2.2.0+]
+
+= Usage
+
+Clone this repository and edit the `src/main/resources/config` file:
+
+* `origin` must be the URL of *first* blog post you published
+* `jbake_output` is the path to your local JBake blog
+* `author` is the name of the author you'd like to use
+
+Then execute the following command:
+
+`./gradlew export`
+
+= Output
+
+For each page, the script will generate an http://asciidoctor.org/[asciidoc] file in the `content/[year]/[month]/[day]`
+directory. You can check the result by running the `jbake` command.
+
+= Tweaking the script
+
+This script has only been tested with my own blog. It is likely that you'll have to make adaptations depending on the
+layout/theme of your own blog.
